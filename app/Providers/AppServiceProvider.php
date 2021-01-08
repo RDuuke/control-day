@@ -19,11 +19,12 @@ class AppServiceProvider extends ServiceProvider
        }
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
+   /**
+    * Bootstrap any application services.
+    *
+    * @param UrlGenerator $uri
+    * @return void
+    */
     public function boot(UrlGenerator $uri)
     {
        if (env('REDIRECT_HTTPS')) {
