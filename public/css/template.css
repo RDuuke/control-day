@@ -1,0 +1,64 @@
+body {
+    background-color: #50b547;
+    font-family: 'Nunito';
+}
+.error {
+    background-color: darksalmon;
+    width: 300px;
+    margin-top: 1em;
+    padding: 0.5em;
+    font-weight: bold;
+    color: white;
+}
+#panel,
+#ready
+{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#ready {
+    height: 100vh;
+}
+#ready form,
+#panel form
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+#ready form#login {
+    padding: 2em;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px #403e3e;
+
+}
+input,
+select,
+button,
+textarea,
+label
+{
+    min-width: 300px;
+    padding: 1em;
+    margin-top: 1em;
+}
+button
+{
+    background-color: #048C42;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+table {
+    width: 100%;
+}
+table tbody tr:nth-child(2n) {
+    background-color: #a2e09d;
+}
+table td {
+    text-align: center;
+}
