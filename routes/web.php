@@ -13,14 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-   $promoters = \App\Promoter::all();
-   return view('index', [
-      'promoters' => $promoters
-   ]);
-});
-
-
 Route::get('/promoter', 'PromoterController@index')->name('promoter');
 Route::post('/promoter', 'PromoterController@singin')->name('promoter.sing');
 Route::get('/promoter/{id}/controls', 'PromoterController@controls')->name('promoter.controls');
