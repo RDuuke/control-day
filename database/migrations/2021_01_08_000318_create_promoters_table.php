@@ -18,6 +18,7 @@ class CreatePromotersTable extends Migration
             $table->string('name');
             $table->string('last_name');
             $table->integer('document')->unique();
+            $table->enum('deleted', ['0','1'])->default('0');
             $table->timestamps();
         });
     }
