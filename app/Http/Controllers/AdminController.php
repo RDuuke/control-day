@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-use App\Promoter;
 use App\Admin;
+use App\ControlDay;
+use App\Promoter;
 
 class AdminController extends Controller
 {
@@ -52,7 +53,7 @@ class AdminController extends Controller
 
     public function index(){
 
-        $promoters = Promoter::all();
+        $promoters = Promoter::paginate(10);
         return view('admin.dashboard.index', ['promoters' => $promoters]);
 
     }
@@ -188,6 +189,21 @@ class AdminController extends Controller
             return redirect(route('admin.index'));
 
         }
+
+
+    }
+
+    public function showPromoter($id){
+
+        $promoter = Promoter::find($id);
+        $registers = $promoter->controls_day();
+
+        return view('admin.dashboard.show_promoter', ['promoter' => $promoter, 'registers' => $registers]);
+
+    }
+
+    public function showRegisterPromoter($id_promoter, $id_register){
+
 
 
     }

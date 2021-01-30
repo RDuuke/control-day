@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function(){
     Route::post('/promoter/{id}/update', 'AdminController@update')->name('admin.promoter.update');
     Route::get('/promoter/{id}/delete', 'AdminController@delete')->name('admin.promoter.delete');
     Route::get('/promoter/{id}/reintegrate', 'AdminController@reintegrate')->name('admin.promoter.reintegrate');
+    Route::get('/promoter/{id}/show', 'AdminController@showPromoter')->name('admin.promoter.show');
+    Route::get('/promoter/{id_promoter}/register/{id_register}/show', 'AdminController@showRegisterPromoter')->name('admin.promoter.register.show');
 
 } );
 

@@ -12,14 +12,17 @@ class PromoterSeeder extends Seeder
      */
     public function run()
     {
-      for($i = 0; $i < 17; $i++) {
-         factory(\App\Promoter::class, function (Faker $faker) {
-            return [
-               'name' => $faker->name,
-               'last_name' => $faker->lastName,
-               'document' => $faker->creditCardNumber
-            ];
-         })->create();
-      }
+      // for($i = 0; $i < 17; $i++) {
+      //    factory(\App\Promoter::class, function (Faker $faker) {
+      //       return [
+      //          'name' => $faker->name,
+      //          'last_name' => $faker->lastName,
+      //          'document' => '0',
+      //          'document' => $faker->creditCardNumber
+      //       ];
+      //    })->create();
+         
+      // }
+      factory(\App\Promoter::class, 17)->create();
     }
 }

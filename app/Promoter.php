@@ -8,7 +8,7 @@ class Promoter extends Model
 {
     protected $table = 'promoters';
 
-    protected $fillable = ['name', 'last_name', 'document'];
+    protected $fillable = ['name', 'last_name', 'document', 'deleted'];
 
     public function controls_day()
     {

@@ -52,6 +52,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {{ $promoters->links() }}
             </div>
             
         @endif

@@ -9,6 +9,7 @@ $factory->define(\App\Promoter::class, function (Faker $faker) {
     return [
        'name' => $faker->name,
        'last_name' => $faker->lastName,
-       'document' => $faker->creditCardNumber
+       'document' => mt_rand(1000000, 999999999),
+       'deleted' => '0'
     ];
 });
