@@ -47,6 +47,8 @@
                                     @else
                                         <a href="{{ route('admin.promoter.delete', ['id' => $promoter->id]) }}">Eliminar</a>
                                     @endif
+                                    -
+                                    <a href="{{ route('admin.promoter.show', ['id' => $promoter->id]) }}">Ver</a>
                                 </td>
                             </tr>
                         @endforeach

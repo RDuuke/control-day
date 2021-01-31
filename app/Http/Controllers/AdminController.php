@@ -196,15 +196,20 @@ class AdminController extends Controller
     public function showPromoter($id){
 
         $promoter = Promoter::find($id);
-        $registers = $promoter->controls_day();
+        $controls_day = $promoter->controls_day()->paginate(10);
 
-        return view('admin.dashboard.show_promoter', ['promoter' => $promoter, 'registers' => $registers]);
+        return view('admin.dashboard.show_promoter', ['promoter' => $promoter, 'controls_day' => $controls_day]);
 
     }
 
     public function showRegisterPromoter($id_promoter, $id_register){
 
-
+        $promoter = Promoter::find($id_promoter);
+        $control = ControlDay::find($id_register);
+        return view('admin.dashboard.show_promoter_register', [
+           'control' => $control,
+           'promoter' => $promoter
+        ]);
 
     }
 
