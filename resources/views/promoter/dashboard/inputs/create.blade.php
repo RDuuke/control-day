@@ -1,5 +1,5 @@
 <label for="date">Fecha</label>
-<input type="date" name="date" id="date" required>
+<input type="date" name="date" id="date" maxlenght="240" required>
 @error('date')
     <small>{{ $message }}</small>
 @enderror
@@ -17,7 +17,7 @@
     <small>{{ $message }}</small>
 @enderror
 <label for="description">Descripción</label>
-<textarea name="description" id="description"></textarea>
+<textarea name="description" id="description" maxlenght="240" required></textarea>
 @error('description')
     <small>{{ $message }}</small>
 @enderror

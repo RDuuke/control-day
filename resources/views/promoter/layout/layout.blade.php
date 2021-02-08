@@ -11,6 +11,7 @@
     <link href="{{ asset('css/template.css') }}" rel="stylesheet">
 </head>
 <body id="{{ session()->exists('promoter_id') ? 'panel' : 'ready' }}">
-@yield('content')
+    @yield('content')
+    <script src="{{ asset('js/promoter/index.js') }}"></script>
 </body>
 </html>

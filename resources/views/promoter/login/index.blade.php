@@ -10,7 +10,7 @@
                     <small class="error">{{ $message }}</small>
                 @enderror
                 @csrf
-                <button>Ingresar</button>
+                <button class="btn btn-color-main">Ingresar</button>
             </form>
         </div>
     </div>

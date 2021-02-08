@@ -18,8 +18,10 @@ class CreateControlDayTable extends Migration
             $table->foreignId('promoter_id');
             $table->enum('type', ['start', 'end']);
             $table->string('date', 250);
+            $table->string('hour', 250);
             $table->text('description');
             $table->text('evidence');
+            $table->enum('deleted', ['0', '1'])->default('0');
             $table->timestamps();
         });
     }

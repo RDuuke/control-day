@@ -1,13 +1,14 @@
-@extends('promoter.layout.layout')
+@extends('promoter.dashboard.layout')
 
 @section('content')
     <div class="rd-container">
-        <div class="rd-element rd-s-100 rd-l-60 center" style="background-color: white">
+        {{-- <div class="rd-element rd-s-100 rd-l-60 center" style="background-color: white">
             <h3>Registros de {{ $promoter->full_name }}</h3>
-        </div>
+        </div> --}}
         <div class="rd-element rd-s-100 rd-l-60 center" style="background-color: white">
-            <p class="t-right"><a href="{{ route('promoter.logout') }}">Cerrar sesión</a></p>
-            <p><a href="{{ route('promoter.controls.create', ['id' => $promoter->id]) }}">Agregar Nueva</a></p>
+            {{-- <p class="t-right"><a href="{{ route('promoter.logout') }}">Cerrar sesión</a></p> --}}
+            <p><a href="{{ route('promoter.controls.create', ['id' => $promoter->id]) }}" class="btn btn-color-main">Agregar Nueva</a></p>
+            <h2 class="mb-2em">Registros del promotor</h2>
             <table>
                 <thead>
                     <tr>
@@ -15,7 +16,7 @@
                         <th>Fecha</th>
                         <th>Tipo</th>
                         <th>Detalle</th>
-                        <th colspan="2"></th>
+                        <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +28,11 @@
                         <td>
                             <a href="{{ route('promoter.control.detail', ['id' => $control->id, 'iduser' => $promoter->id]) }}">Ver</a>
                         </td>
-                        <td>Editar  - Eliminar</td>
+                        <td>
+                            <a href="{{ route('promoter.control.edit', ['id' => $control->id]) }}">Editar</a>
+                            - 
+                            <a href="#">Eliminar</a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

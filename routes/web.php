@@ -19,6 +19,9 @@ Route::prefix('login')->group( function(){
     Route::post('/admin/sigin', 'AdminController@sigin')->name('admin.sigin');
     Route::get('/admin/logout', 'AdminController@logout')->name('admin.logout');
 
+    Route::get('/promoter', 'PromoterController@index')->name('promoter');
+    Route::post('/promoter', 'PromoterController@singin')->name('promoter.sing');
+
 } );
 
 
@@ -37,13 +40,26 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function(){
 
 } );
 
-Route::get('/promoter', 'PromoterController@index')->name('promoter');
-Route::post('/promoter', 'PromoterController@singin')->name('promoter.sing');
-Route::get('/promoter/{id}/controls', 'PromoterController@controls')->name('promoter.controls');
-Route::get('/promoter/{id}/controls/create', 'PromoterController@controlsCreate')->name('promoter.controls.create');
-Route::post('/promoter/{id}/controls/store', 'PromoterController@controlsStore')->name('promoter.controls.store');
-Route::get('/promoter/{iduser}/controls/{id}/details', 'PromoterController@controlDetails')->name('promoter.control.detail');
-Route::get('/promoter/logout', 'PromoterController@logout')->name('promoter.logout');
+Route::group(['prefix' => 'promoter', 'middleware' => 'auth.promoter'], function(){
+
+
+    Route::get('/{id}/controls', 'PromoterController@controls')->name('promoter.controls');
+    Route::get('/{id}/controls/create', 'PromoterController@controlsCreate')->name('promoter.controls.create');
+    Route::post('/{id}/controls/store', 'PromoterController@controlsStore')->name('promoter.controls.store');
+    Route::get('/{iduser}/controls/{id}/details', 'PromoterController@controlDetails')->name('promoter.control.detail');
+    Route::get('/controls/{id}/edit', 'PromoterController@controlEdit')->name('promoter.control.edit');
+    Route::post('/controls/{id}/update', 'PromoterController@controlUpdate')->name('promoter.control.update');
+    Route::get('/logout', 'PromoterController@logout')->name('promoter.logout');
+
+} );
+
+// Route::get('/promoter', 'PromoterController@index')->name('promoter');
+// Route::post('/promoter', 'PromoterController@singin')->name('promoter.sing');
+// Route::get('/promoter/{id}/controls', 'PromoterController@controls')->name('promoter.controls');
+// Route::get('/promoter/{id}/controls/create', 'PromoterController@controlsCreate')->name('promoter.controls.create');
+// Route::post('/promoter/{id}/controls/store', 'PromoterController@controlsStore')->name('promoter.controls.store');
+// Route::get('/promoter/{iduser}/controls/{id}/details', 'PromoterController@controlDetails')->name('promoter.control.detail');
+// Route::get('/promoter/logout', 'PromoterController@logout')->name('promoter.logout');
 
 
 Route::get('/admin/first', function(){
