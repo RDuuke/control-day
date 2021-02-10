@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\ControlDay;
 use App\Promoter;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PromoterController extends Controller
 {
@@ -26,8 +28,9 @@ class PromoterController extends Controller
     }
 
     public function controls($id){
-
-      return view('promoter.dashboard.index', ['promoter' => Promoter::find($id)]);
+      //  $promoter = 
+      // dd(Promoter::where('id', $id));
+      return view('promoter.dashboard.index', ['promoter' => Promoter::find( $id)]);
       
     }
 
@@ -67,7 +70,7 @@ class PromoterController extends Controller
       if($request->get('description') != '') {
          $control_day->description = $request->get('description');
       }
-      $control_day->evidence = $evidence->store('images/'.session('promoter_id') . '/' . $next_id);
+      $control_day->evidence = $evidence->store('images/'.session('promoter_id'));
       $control_day->save();
       return redirect(route('promoter.controls', [
          'id' => session('promoter_id')
@@ -83,15 +86,49 @@ class PromoterController extends Controller
 
     }
 
-    public function controlsUpdate(Request $request, $id){
+    public function controlsUpdate(Request $request, $id, $idPromoter){
 
-      $control = ControlDay::find($id);
+      //$control = ControlDay::find($id);
+      $hasFile = false;
+      // dd($request->hasFile('evidence'));
 
-      $request->validate([
+      $dataToValidate = [
+
          'type' => 'required',
          'hour' => 'required',
-         'date' => 'required'
-      ]);
+         'date' => 'required',
+         'description' => 'required',
+
+      ];
+
+      if($request->hasFile('evidence')){
+
+         $dataToValidate['evidence'] = 'required|mimetypes:image/jpeg';
+         $hasFile = true;
+         $evidence = $request->file('evidence');
+
+      }
+
+      $request->validate($dataToValidate);
+
+      $saveData = [
+
+         'type' => $request->post('type'),
+         'hour' => $request->post('hour'),
+         'date' => $request->post('date'),
+         'description' => $request->post('description'),
+
+      ];
+
+      if($hasFile){
+
+         $saveData['evidence'] = $evidence->store('images/'.session('promoter_id'));
+
+      }
+
+      ControlDay::where('id', $id)->update($saveData);
+
+      return redirect(route('promoter.controls', ['id' => $idPromoter]));
 
     }
 

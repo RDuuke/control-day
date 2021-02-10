@@ -10,7 +10,7 @@
     <link href="{{ asset('css/grid.css') }}" rel="stylesheet">
     <link href="{{ asset('css/template.css') }}" rel="stylesheet">
 </head>
-{{-- <body id="{{ session()->exists('promoter_id') ? 'panel' : 'ready' }}"> --}}
+
 <body>
     @yield('content')
 </body>

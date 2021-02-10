@@ -6,7 +6,7 @@
             <h3>Nuevo registro</h3>
         </div>
         <div class="rd-element rd-s-100 rd-l-60 center" style="background-color: white">
-            <form action="{{ route('promoter.controls.update', [ 'id' => $control->id]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('promoter.control.update', [ 'id' => $control->id, 'idPromotor' => session('promoter_id')]) }}" method="post" enctype="multipart/form-data">
                 @include('promoter.dashboard.inputs.edit')
                 <div class="flex">
                     <button class="btn btn-color-main" style="margin-right: .5em">Guardar</button> 

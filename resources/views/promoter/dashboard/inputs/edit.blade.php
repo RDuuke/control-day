@@ -17,7 +17,7 @@
     <small>{{ $message }}</small>
 @enderror
 <label for="description">Descripción</label>
-<textarea name="description" id="description" value="{{ $control->description }}" maxlenght="240" required></textarea>
+<textarea name="description" id="description" maxlenght="240" required>{{ $control->description }}</textarea>
 @error('description')
     <small>{{ $message }}</small>
 @enderror
