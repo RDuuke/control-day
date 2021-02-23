@@ -47,8 +47,8 @@ Route::group(['prefix' => 'promoter', 'middleware' => 'auth.promoter'], function
     Route::post('/{id}/controls/store', 'PromoterController@controlsStore')->name('promoter.controls.store');
     Route::get('/{iduser}/controls/{id}/details', 'PromoterController@controlDetails')->name('promoter.control.detail');
     Route::get('/controls/{id}/edit', 'PromoterController@controlsEdit')->name('promoter.control.edit');
-    Route::post('/controls/{id}/update', 'PromoterController@controlsUpdate')->name('promoter.control.update');
-    Route::get('/controls/{id}/delete', 'PromoterController@controlsDelete')->name('promoter.control.delete');
+    Route::post('/controls/{id}/update/{idpromoter}', 'PromoterController@controlsUpdate')->name('promoter.control.update');
+    Route::get('/{idpromoter}/controls/{id}/delete', 'PromoterController@controlsDelete')->name('promoter.control.delete');
     Route::get('/logout', 'PromoterController@logout')->name('promoter.logout');
 
 } );

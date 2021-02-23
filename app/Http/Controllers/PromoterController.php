@@ -28,9 +28,10 @@ class PromoterController extends Controller
     }
 
     public function controls($id){
-      //  $promoter = 
-      // dd(Promoter::where('id', $id));
-      return view('promoter.dashboard.index', ['promoter' => Promoter::find( $id)]);
+       // dd(Promoter::where('id', $id));
+      $promoter = Promoter::find($id);
+      $controls_day = $promoter->controls_day()->where('deleted', '0')->paginate(10);
+      return view('promoter.dashboard.index', ['promoter' => $promoter, 'controls_day' => $controls_day]);
       
     }
 
@@ -132,7 +133,7 @@ class PromoterController extends Controller
 
     }
 
-    public function controlsDelete(){
+    public function controlsDelete($idpromoter, $id){
 
       try {
 
@@ -145,7 +146,7 @@ class PromoterController extends Controller
          ]
          );
 
-         return redirect(route('admin.index'));
+         return redirect(route('promoter.controls', ['id' => $idpromoter]));
 
      } catch (\Throwable $th) {
 
@@ -156,7 +157,7 @@ class PromoterController extends Controller
          ]
          );
 
-         return redirect(route('admin.index'));
+         return redirect(route('promoter.controls', ['id' => $idpromoter]));
 
      }  
 
